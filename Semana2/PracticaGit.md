@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/5281c1fa-eea1-4bb4-a026-825f2988e000)# PROYECTO COLABORATIVO
+# PROYECTO COLABORATIVO
 El siguiente proyecto se divide en 4 partes, para su desarrollo se debe asignar una o mas partes a cada miembro del equipo.
 
 **Estructura:**
