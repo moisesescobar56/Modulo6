@@ -20,11 +20,10 @@ SistemaElParaisal
 Proyecto de sistema de ventas para el comedor "El Paraisal".
 ```
 ![image](https://github.com/user-attachments/assets/43d98e32-42a0-4162-b33e-0a09753452a5)
-** Resultado: ** Luego dirigirse a la organizacion. 
+**Resultado:** Luego dirigirse a la organizacion. 
 ![image](https://github.com/user-attachments/assets/5a4d03bb-3ed9-4409-9acb-66730af37bff)
 
 **Paso 3:** Ir a la configuracion de la organizacion.
-
 ![image](https://github.com/user-attachments/assets/39a8a0b2-6919-46ff-a6c9-b88737198aea)
 **Paso 4:** Acceder al menu **Users** y luego dar clic en Add Users.
 ![image](https://github.com/user-attachments/assets/f04b34bb-1309-4776-b1c7-1a62f96ab225)
