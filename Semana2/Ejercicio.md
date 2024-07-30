@@ -1,5 +1,9 @@
 # EJERCICIO
  Realizar lo siguiente:
+1. Agregar a la solucion un proyecto de tipo "Aplicacion de Windows Forms (.NET Framework)".
+2. Configurar la arquitectura del proyecto como el diagrama adjunto (Segun dependencia de las flechas).
+3. Sincronizar los cambios con el repositorio.
+
 ## 1. Agregar a la solucion un proyecto de tipo **"Aplicacion de Windows Forms (.NET Framework)"**.
 ```
 SistemaElParaisal.UI.WinForms
