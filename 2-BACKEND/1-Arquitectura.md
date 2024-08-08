@@ -103,7 +103,8 @@ En este proyecto nos basaremos en la arquitectura de N-Capas en la cual creamos 
 
 **Paso 6:** Revisar que quede marcada las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.DAL"**, luego dar clic en **Aceptar**.
 
-![image](https://github.com/user-attachments/assets/ea208850-e25b-4d54-9288-9e5a5ae6cc54)
+![image](https://github.com/user-attachments/assets/363e99e3-60c3-46b8-b333-b71775b4942e)
+
 
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/f535cf15-fad5-4e10-aaba-9fdec6a639b4)
