@@ -79,4 +79,203 @@ En este proyecto nos basaremos en la arquitectura de N-Capas en la cual creamos 
 ![2023 G2_G5 - Desarrollo de CRUD en aplicación de Windows Forms](https://github.com/user-attachments/assets/0509b3e1-024f-4fe8-a8d8-aeb478db355a)
 
 
-**Paso 1:** Ubicarse en la capa **"SistemaElParaisal.DAL"** y en la opcion de **"Referencias"** dar clic derecho y seleccionar **""**
+**Paso 1:** Ubicarse en la capa **"SistemaElParaisal.DAL"** y en la opcion de **"Referencias"** dar clic derecho y seleccionar **"> Agregar referencia"**.
+
+![image](https://github.com/user-attachments/assets/2cf46927-d789-44f8-ba98-86e0b29cd227)
+
+**Paso 2:** Ubicarse en la opcion **Proyectos > Solución** y marcar la opcion **"SistemaElParaisal.EN"**.
+
+![image](https://github.com/user-attachments/assets/884568aa-ccc2-4628-b506-c57d303425c7)
+
+**Paso 3:** Revisar que quede marcada la opcion **"SistemaElParaisal.EN"** y dar clic en **Aceptar**.
+
+![image](https://github.com/user-attachments/assets/81866b3a-7dfa-4811-a1a8-39a29c4a340e)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/9a26324e-4522-468d-99a7-11c2801d694d)
+
+**Paso 4:** Ubicarse en la capa **"SistemaElParaisal.BL"** y en la opcion de **"Referencias"** dar clic derecho y seleccionar **"> Agregar referencia"**.
+
+![image](https://github.com/user-attachments/assets/822a08e9-8937-4228-853a-54c94cd0f30e)
+
+**Paso 5:** Ubicarse en la opcion **Proyectos > Solución** y marcar las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.DAL"**,
+
+**Paso 6:** Revisar que quede marcada las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.DAL"**, luego dar clic en **Aceptar**.
+
+![image](https://github.com/user-attachments/assets/ea208850-e25b-4d54-9288-9e5a5ae6cc54)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/f535cf15-fad5-4e10-aaba-9fdec6a639b4)
+
+**Paso 7:** Ubicarse en la capa **"SistemaElParaisal.PruebasUnitarias"** y en la opcion de **"Referencias"** dar clic derecho y seleccionar **"> Agregar referencia"**.
+
+![image](https://github.com/user-attachments/assets/8fe5c5e8-933c-4371-be2b-2ef2ff6ae01a)
+
+**Paso 8:** Ubicarse en la opcion **Proyectos > Solución** y marcar las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.BL"**,
+
+**Paso 9:** Revisar que quede marcada las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.BL"**, luego dar clic en **Aceptar**.
+
+![image](https://github.com/user-attachments/assets/c7a11c9b-f673-4d76-9a5d-dd0ba58ff69d)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/2def6596-0a93-4295-ae88-767738c36c5e)
+
+**Paso 10:** Ubicarse en la capa **"SistemaElParaisal.UI.WinForms"** y en la opcion de **"Referencias"** dar clic derecho y seleccionar **"> Agregar referencia"**.
+
+![image](https://github.com/user-attachments/assets/fcf7f924-cb18-4e0f-b9c0-d0378d5738e0)
+
+**Paso 11:** Ubicarse en la opcion **Proyectos > Solución** y marcar las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.BL"**,
+
+**Paso 12:** Revisar que quede marcada las opciones **"SistemaElParaisal.EN"**  y **"SistemaElParaisal.BL"**, luego dar clic en **Aceptar**.
+
+![image](https://github.com/user-attachments/assets/19c80196-e377-4857-ab5c-81769b798a33)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/26c7a597-c8b0-432b-b692-e5676a03caff)
+
+## PARTE 3 - Configuracion de la comunDB
+Para poder obtener acceso a la base de datos utilizando esta arquitectura, sera necesario crear un archivo comun que contenga metodos para conectarse a una base de datos, crear consultas y obtener los resultados. A continuacion se creara y configurara la clase ComunDB.
+
+**Paso 1:** Ubicarse en la capa **"SistemaElParaisal.DAL"** y dar clic derecho y seleccionar **"Agregar > Clase"**.
+
+![image](https://github.com/user-attachments/assets/f264c7fb-195b-43c3-a03f-b42bc0abde14)
+
+**Paso 2:** Nombrar la clase **"ComunDB.cs"** y dar clic en **Agregar**.
+
+![image](https://github.com/user-attachments/assets/be894ec9-9052-4585-9a65-24d27b8a4a46)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/bca62f75-e4eb-47f0-9ffe-179c33d9d37a)
+
+**Paso 3:** Establecer como **"public"** la clase **"ComunDB.cs"**
+
+![image](https://github.com/user-attachments/assets/626de071-5dae-4384-ac90-8169fc14fdc7)
+
+**Paso 4:** Agregar en la seccion de using las referencias a las bibliotecas de acceso a datos a utiizar.
+
+```csharp
+// Referencias
+using System.Data;
+using System.Data.SqlClient;
+```
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/aa89eeb0-edde-46c8-98e5-245eb2a35bf7)
+
+**Paso 5:** Agregar el String de conexion y metodos de acceso a datos.
+
+```csharp
+const string strConexion = @"Mi string de conexion aquí";
+
+private static SqlConnection ObtenerConexion()
+{
+    SqlConnection conexion = new SqlConnection(strConexion);
+    conexion.Open();
+    return conexion;
+}
+
+public static SqlCommand ObtenerComando()
+{
+    SqlCommand comando = new SqlCommand();
+    comando.Connection = ObtenerConexion();
+    return comando;
+}
+
+public static SqlCommand ObtenerComando(SqlTransaction pTransaction)
+{
+    // Sobre carga del metodo ObtenerComando para crear comandos de transaccion
+    SqlCommand comando = new SqlCommand();
+    comando.Connection = pTransaction.Connection;
+    comando.Transaction = pTransaction;
+    return comando;
+}
+
+public static int EjecutarComando(SqlCommand pComando)
+{
+    int resultado = pComando.ExecuteNonQuery();
+    pComando.Connection.Close();
+    return resultado;
+}
+
+public static SqlDataReader EjecutarComandoReader(SqlCommand pComando)
+{
+    SqlDataReader reader = pComando.ExecuteReader(CommandBehavior.CloseConnection);
+    return reader;
+}
+
+public static SqlTransaction CrearTransaction()
+{
+    SqlConnection conexion = ObtenerConexion();
+    return conexion.BeginTransaction();
+}
+```
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/154ca133-ce3c-4143-8e05-5b2a354a973d)
+
+### Configurar String de conexion
+Ver video: https://youtu.be/oct6MWqZhoE?si=cSlDKBCiX8MflLDY
+
+## Archivo **ComunDB.cs**
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// Referencias
+using System.Data;
+using System.Data.SqlClient;
+
+namespace SistemaElParaisal.DAL
+{
+    public class ComunDB
+    {
+        const string strConexion = @"Mi string de conexion aquí";
+
+        private static SqlConnection ObtenerConexion()
+        {
+            SqlConnection conexion = new SqlConnection(strConexion);
+            conexion.Open();
+            return conexion;
+        }
+
+        public static SqlCommand ObtenerComando()
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = ObtenerConexion();
+            return comando;
+        }
+
+        public static SqlCommand ObtenerComando(SqlTransaction pTransaction)
+        {
+            // Sobre carga del metodo ObtenerComando para crear comandos de transaccion
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = pTransaction.Connection;
+            comando.Transaction = pTransaction;
+            return comando;
+        }
+
+        public static int EjecutarComando(SqlCommand pComando)
+        {
+            int resultado = pComando.ExecuteNonQuery();
+            pComando.Connection.Close();
+            return resultado;
+        }
+
+        public static SqlDataReader EjecutarComandoReader(SqlCommand pComando)
+        {
+            SqlDataReader reader = pComando.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader;
+        }
+
+        public static SqlTransaction CrearTransaction()
+        {
+            SqlConnection conexion = ObtenerConexion();
+            return conexion.BeginTransaction();
+        }
+    }
+}
+
+```
+
