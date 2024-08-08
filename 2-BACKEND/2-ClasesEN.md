@@ -14,7 +14,7 @@ Es importante respetar el orden de creacion del diagrama de clases. Para el ejem
 
 ![image](https://github.com/user-attachments/assets/dcc9bfd9-6e92-4574-aef8-4fd7b8580d91)
 
-**IMPORTANTE:** se recomienda primero crear los archivos de clases y luego codificarlas.
+**IMPORTANTE:** se recomienda primero crear los archivos de clases, establecerlas como **"public"** y luego codificarlas.
 
 **Paso 1:** Ubicarse en la capa **"SistemaElParaisal.EN"** y dar clic derecho y seleccionar **"Agregar > Clase"**.
 
