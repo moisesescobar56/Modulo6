@@ -10,9 +10,9 @@ Para mitigar esta problematica, nos auxilaremos de buenas practicas y modelaremo
 Las clases de nuestro modelo de datos debe crearse en la **"Capa de entidades (EN)"** como se muestra en el siguiente esquema: 
 ![image](https://github.com/user-attachments/assets/83880c6b-fb27-4909-b10f-94987ce025c5)
 
-Es importante respetar el orden de creacion del diagrama de clases. Solo se trabajara con la clase Cargo y Empleado, pero en un escenario real se deben crear todas las clases.
+Es importante respetar el orden de creacion del diagrama de clases. Solo se trabajara con la clase **Cargo y Empleado**, pero en un escenario real se deben crear todas las clases.
 
-![image](https://github.com/user-attachments/assets/635f2fb3-4f8a-47a3-8fa0-cd0c6aed17e3)
+![image](https://github.com/user-attachments/assets/dcc9bfd9-6e92-4574-aef8-4fd7b8580d91)
 
 **IMPORTANTE:** se recomienda primero crear los archivos de clases y luego codificarlas.
 
