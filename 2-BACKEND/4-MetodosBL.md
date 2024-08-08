@@ -72,43 +72,60 @@ public List<Cargo> Buscar(Cargo pCargo)
 **Paso 4:** Agregar en la seccion de using las referencias a las bibliotecas del proyecto a utilizar.
 
 ```csharp
+//Referencias
+using System.Security.Cryptography;
 // Referencias del proyecto
 using SistemaElParaisal.EN;
 using SistemaElParaisal.DAL;
 ```
 **Resultado:**
-![image](https://github.com/user-attachments/assets/9e5b44d2-58e2-47f0-a37a-66ab5fb33c65)
+![image](https://github.com/user-attachments/assets/a5b31828-2be9-4d0e-b920-87d4cf8cee93)
 
 **Paso 4:** Codificar los metodos intermediarios de **EmpleadoBL** segun el diagrama de clases y **Guardar** los cambios.
 
 ![image](https://github.com/user-attachments/assets/f5f35585-645f-45aa-8347-88327f4dc4ad)
 
 ```csharp
-  public int Guardar(Empleado pEmpleado)
-  {
-      return EmpleadoDAL.Guardar(pEmpleado);
-  }
-  public int Modificar(Empleado pEmpleado)
-  {
-      return EmpleadoDAL.Modificar(pEmpleado);
-  }
-  public int Eliminar(Empleado pEmpleado)
-  {
-      return EmpleadoDAL.Eliminar(pEmpleado);
-  }
-  public Empleado ObtenerPorId(short pIdEmpleado)
-  {
-      return EmpleadoDAL.ObtenerPorId(pIdEmpleado);
-  }
-  public List<Empleado> Buscar(Empleado pEmpleado)
-  {
-      return EmpleadoDAL.Buscar(pEmpleado);
-  }
+private static string CifrarHashSha256(string pTexto)
+{
+    // Metodo para cifrar las claves
+    byte[] bytes = Encoding.Unicode.GetBytes(pTexto);
+    SHA256Managed hashstring = new SHA256Managed();
+    byte[] hash = hashstring.ComputeHash(bytes);
+    string hashString = string.Empty;
+    foreach (byte x in hash)
+    {
+        hashString += String.Format("{0:x2}", x);
+    }
+    return hashString;
+}
+public int Guardar(Empleado pEmpleado)
+{
+    pEmpleado.Clave = CifrarHashSha256(pEmpleado.Clave);
+    return EmpleadoDAL.Guardar(pEmpleado);
+}
+public int Modificar(Empleado pEmpleado)
+{
+    pEmpleado.Clave = CifrarHashSha256(pEmpleado.Clave);
+    return EmpleadoDAL.Modificar(pEmpleado);
+}
+public int Eliminar(Empleado pEmpleado)
+{
+    return EmpleadoDAL.Eliminar(pEmpleado);
+}
+public Empleado ObtenerPorId(short pIdEmpleado)
+{
+    return EmpleadoDAL.ObtenerPorId(pIdEmpleado);
+}
+public List<Empleado> Buscar(Empleado pEmpleado)
+{
+    return EmpleadoDAL.Buscar(pEmpleado);
+}
 ```
+- **CifrarHashSha256:** Metodo secreto creado para cifrar textos en Hash SHA256
 
 **Resultado:**
-![image](https://github.com/user-attachments/assets/7c57bbff-380f-4db4-95b0-aff70d8dd7d3)
-
+![image](https://github.com/user-attachments/assets/89f5c14f-a1b8-45e6-8a87-962c7ad3d4cb)
 
 ### **NOTA:** Al iniciar un proyecto es recomendable crear primero los archivos con accesibilidad publica y luego codificarlos. 
 
@@ -146,6 +163,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//Referencias
+using System.Security.Cryptography;
 // Referencias del proyecto
 using SistemaElParaisal.EN;
 using SistemaElParaisal.DAL;
@@ -154,12 +173,27 @@ namespace SistemaElParaisal.BL
 {
     public class EmpleadoBL
     {
+        private static string CifrarHashSha256(string pTexto)
+        {
+            // Metodo para cifrar las claves
+            byte[] bytes = Encoding.Unicode.GetBytes(pTexto);
+            SHA256Managed hashstring = new SHA256Managed();
+            byte[] hash = hashstring.ComputeHash(bytes);
+            string hashString = string.Empty;
+            foreach (byte x in hash)
+            {
+                hashString += String.Format("{0:x2}", x);
+            }
+            return hashString;
+        }
         public int Guardar(Empleado pEmpleado)
         {
+            pEmpleado.Clave = CifrarHashSha256(pEmpleado.Clave);
             return EmpleadoDAL.Guardar(pEmpleado);
         }
         public int Modificar(Empleado pEmpleado)
         {
+            pEmpleado.Clave = CifrarHashSha256(pEmpleado.Clave);
             return EmpleadoDAL.Modificar(pEmpleado);
         }
         public int Eliminar(Empleado pEmpleado)
