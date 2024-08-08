@@ -233,7 +233,7 @@ public static int Eliminar(Empleado pEmpleado)
 **Paso 8:** Codificar el metodo **"ObtenerPorId"** en **EmpleadoDAL** y **Guardar** los cambios.
 ```csharp
 #region Metodos de Busqueda
-public static Empleado ObtenerPorId(int pIdEmpleado)
+public static Empleado ObtenerPorId(short pIdEmpleado)
 {
     Empleado obj = new Empleado();
 
