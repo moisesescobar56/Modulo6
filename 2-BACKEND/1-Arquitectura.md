@@ -1,23 +1,34 @@
-## PARTE 1 - Creacion de arquitectura N-Capas del proyecto
+## PARTE 1 - Creacion de la arquitectura N-Capas del proyecto
 **Paso 1:** Abrir Visual Studio y Crear un nuevo proyecto.
+
 ![image](https://github.com/user-attachments/assets/2bea8f03-9bc9-49ce-933e-f8e718fcff56)
+
 **Paso 2:** Seleccionar Crear una solucion en blanco y dar clic en Siguiente.
+
 ![image](https://github.com/user-attachments/assets/118c92ee-78f1-4034-92e1-57a3d0681435)
+
 **Paso 3:** Nombrar a la solucion en blanco y dar clic en Crear.
 ```
 SistemaElParaisal
 ```
 ![image](https://github.com/user-attachments/assets/72dd07f4-2221-4bd3-8710-d478c4b8ba8e)
+
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/160602de-253a-4773-8372-a791a44492bb)
-**Paso 4:** Dar clic derecho en la solucion y agregar un Nuevo proyecto. 
+
+**Paso 4:** Dar clic derecho en la solucion y seleccionar **"Agregar > Nuevo proyecto"**. 
+
 ![image](https://github.com/user-attachments/assets/771e4004-c252-4187-ae31-dd4af2db70d1)
+
 **Paso 5:** Seleccionar una **Biblioteca de clases (.NET Framework)** y dar clic en Siguiente.
+
 ![image](https://github.com/user-attachments/assets/87e1ae24-b91a-438a-be88-f5d240c95c21)
+
 **Paso 6:** Nombrar a la **Biblioteca de clases (.NET Framework)** y dar clic en Crear.
 ```
 SistemaElParaisal.EN
 ```
+
 ![image](https://github.com/user-attachments/assets/54f87cf6-99a6-4e38-b183-90734026eb6d)
 
 **NOTA:** Eliminar el archivo Class1.cs siempre, solo aplicar para **Biblioteca de clases (.NET Framework)**
@@ -29,17 +40,43 @@ SistemaElParaisal.EN
 
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/222880e5-db41-4416-b038-f99beeacd38c)
-**Paso 8:** Dar clic derecho en la solucion y agregar un Nuevo proyecto. 
+
+**Paso 8:** Dar clic derecho en la solucion y seleccionar **"Agregar > Nuevo proyecto"**. 
+
 **Paso 9:** Seleccionar un **Proyecto de prueba unitaria(.NET Framework)** y dar clic en Siguiente.
+
 ![image](https://github.com/user-attachments/assets/632f3e8a-4a1a-4858-9a35-52b13f015e02)
 
 **Paso 10:** Nombrar al **Proyecto de prueba unitaria(.NET Framework)** y dar clic en Crear.
 ```
 SistemaElParaisal.PruebasUnitarias
 ```
+
 ![image](https://github.com/user-attachments/assets/2c2dcaca-d91e-4515-980c-f1f5b1d81468)
+
 **NOTA:** Eliminar el archivo UnitTest1.cs siempre, solo aplicar para **Proyecto de prueba unitaria(.NET Framework)**
+
 ![image](https://github.com/user-attachments/assets/0a83c273-5a3c-4ad9-b2fa-250f386186bd)
 
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/8257b780-509a-4374-86b3-c82fc698620a)
+
+**Paso 11:** Dar clic derecho en la solucion y seleccionar **"Agregar > Nuevo proyecto"**. 
+
+**Paso 12:** Agregar a la solucion un proyecto de tipo **"Aplicacion de Windows Forms (.NET Framework)"**.
+```
+SistemaElParaisal.UI.WinForms
+```
+
+![image](https://github.com/user-attachments/assets/c2214f6a-4043-4fb7-b9e3-843172ae4fe4)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/752aedc5-750b-430a-868f-e9ceb24f85b6)
+
+## PARTE 2 - Configuracion de la arquitectura N-Capas del proyecto
+En este proyecto nos basaremos en la arquitectura de N-Capas en la cual creamos capas independientes con una unica funcion. Para la configuracion nos baseremos en el siguiente esquema:
+
+![2023 G2_G5 - Desarrollo de CRUD en aplicación de Windows Forms](https://github.com/user-attachments/assets/0509b3e1-024f-4fe8-a8d8-aeb478db355a)
+
+
+**Paso 1:** Ubicarse en la capa **"SistemaElParaisal.DAL"** y en la opcion de **"Referencias"** dar clic derecho y seleccionar **""**
