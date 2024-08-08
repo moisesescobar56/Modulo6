@@ -68,6 +68,10 @@ public static Cargo ObtenerPorId(byte pIdCargo)
 }
 #endregion
 ```
+**NOTA:** Los parametros deben ir en el mismo orden y con el mismo nombre del procedimiento almacenado en el gestor de SQL Server.
+
+![image](https://github.com/user-attachments/assets/f45422b8-a289-48f6-8dc5-64b2f57ae903)
+
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/f66983b5-f02d-4f29-aec4-0087988475e6)
 
@@ -99,7 +103,6 @@ public static List<Cargo> Buscar(Cargo pCargo)
             if (contador > 0)
                 whereSQL += " AND ";
             contador += 1;
-            // @ValorNA = Valor Nombre/Apellido
             whereSQL += " c.Nombre LIKE @Nombre ";
             comando.Parameters.AddWithValue("@Nombre", "%" + pCargo.Nombre + "%");
         }
@@ -179,6 +182,10 @@ public static int Guardar(Empleado pEmpleado)
 
 ![image](https://github.com/user-attachments/assets/6eaf015a-d092-4d83-9176-6c92396badc6)
 
+- **SqlCommand:** clase que permite crear un objeto para enviar una consulta SQL a la base de datos establecida.
+- **CommandType** propiedad que permite establecer el tipo de consulta SQL a ejecutar ***Text*** o ***StoredProcedure*** 
+- **Parameters.AddWithValue:** metodo que permite agregar los parametros dentro de la consulta SQL.
+
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/a13360d7-0e7b-49c7-b3f1-583cae8a2c95)
 
@@ -223,14 +230,351 @@ public static int Eliminar(Empleado pEmpleado)
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/8f76d505-a433-4cbb-a015-7ee5a000aa2f)
 
+**Paso 8:** Codificar el metodo **"ObtenerPorId"** en **EmpleadoDAL** y **Guardar** los cambios.
+```csharp
+#region Metodos de Busqueda
+public static Empleado ObtenerPorId(int pIdEmpleado)
+{
+    Empleado obj = new Empleado();
+
+    SqlCommand comando = ComunDB.ObtenerComando();
+    comando.CommandType = CommandType.StoredProcedure;
+    comando.CommandText = "SP_ObtenerEmpleadoPorId";
+    comando.Parameters.AddWithValue("@IdEmpleado", pIdEmpleado);
+
+    SqlDataReader reader = ComunDB.EjecutarComandoReader(comando);
+    while (reader.Read())
+    {
+        // Orden de las columnas depende de la Consulta SELECT utilizada
+        obj.IdEmpleado = reader.GetInt16(0); // Columna [0] cero
+        obj.IdCargo = reader.GetByte(1); // Columna [0] cero
+        obj.Nombre = reader.GetString(2);  // Columna [1] uno
+        obj.Apellido = reader.GetString(3); // Columna [2] dos
+        obj.Telefono = reader.GetString(4); // Columna [4] cuatro
+    }
+    return obj;
+}
+#endregion
+```
+**NOTA:** Los parametros deben ir en el mismo orden y con el mismo nombre del procedimiento almacenado en el gestor de SQL Server.
+
+![image](https://github.com/user-attachments/assets/c1dbcd87-9475-414f-af3a-b944aef26eca)
+
+**Resultado:**
+![image](https://github.com/user-attachments/assets/540e788a-8ac4-4bf2-9857-3f8c50285ab3)
+
+- **SqlCommand:** clase que permite crear un objeto para enviar una consulta SQL a la base de datos establecida.
+- **CommandType** propiedad que permite establecer el tipo de consulta SQL a ejecutar ***Text*** o ***StoredProcedure*** 
+- **Parameters.AddWithValue:** metodo que permite agregar los parametros dentro de la consulta SQL.
+- **SqlDataReader:** clase que permite crear un objeto para ejecutar una consulta SQL de tipo SELECT y leer el resultado.
+- **GetInt16:** metodo para leer un dato de tipo short (smallint)
+- **GetByte:** metodo para leer un dato de tipo byte (tinyint)
+- **GetString:** metodo para leer un dato de tipo string (varchar)
+
+**Paso 9:** Codificar el metodo **"Buscar"** en **EmpleadoDAL** y **Guardar** los cambios.
+```csharp
+public static List<Empleado> Buscar(Empleado pEmpleado)
+{
+    List<Empleado> lista = new List<Empleado>();
+
+    #region Proceso
+    using (SqlCommand comando = ComunDB.ObtenerComando())
+    {
+        byte contador = 0;
+        string whereSQL = " ";
+        string consulta = @"SELECT TOP 100 e.IdEmpleado, e.IdCargo, e.Nombre, e.Apellido, e.Telefono
+                            FROM Empleado e ";
+
+        // Validar filtros
+        if (pEmpleado.IdCargo > 0)
+        {
+            if (contador > 0)
+                whereSQL += " AND ";
+            contador += 1;
+            whereSQL += " e.IdCargo = @IdCargo ";
+            comando.Parameters.AddWithValue("@IdCargo", pEmpleado.IdCargo);
+        }
+        if (pEmpleado.Nombre != null && pEmpleado.Nombre.Trim() != string.Empty)
+        {
+            if (contador > 0)
+                whereSQL += " AND ";
+            contador += 1;
+            // @ValorNA = Valor Nombre/Apellido
+            whereSQL += " (e.Nombre LIKE @ValorNA OR e.Apellido LIKE @ValorNA) ";
+            comando.Parameters.AddWithValue("@ValorNA", "%" + pEmpleado.Nombre + "%");
+        }
+        if (pEmpleado.Telefono != null && pEmpleado.Telefono.Trim() != string.Empty)
+        {
+            if (contador > 0)
+                whereSQL += " AND ";
+            contador += 1;
+            whereSQL += " e.Telefono = @Telefono ";
+            comando.Parameters.AddWithValue("@Telefono", pEmpleado.Telefono);
+        }
+        // Agregar filtros
+        if (whereSQL.Trim().Length > 0)
+        {
+            whereSQL = " WHERE " + whereSQL;
+        }
+        comando.CommandText = consulta + whereSQL;
+
+        SqlDataReader reader = ComunDB.EjecutarComandoReader(comando);
+        while (reader.Read())
+        {
+            Empleado obj = new Empleado();
+            // Orden de las columnas depende de la Consulta SELECT utilizada
+            obj.IdEmpleado = reader.GetInt16(0); // Columna [0] cero
+            obj.IdCargo = reader.GetByte(1); // Columna [0] cero
+            obj.Nombre = reader.GetString(2);  // Columna [1] uno
+            obj.Apellido = reader.GetString(3); // Columna [2] dos
+            obj.Telefono = reader.GetString(4); // Columna [4] cuatro
+            lista.Add(obj);
+        }
+        comando.Connection.Dispose();
+    }
+    #endregion
+
+    return lista;
+}
+```
+**Resultado:**
+![image](https://github.com/user-attachments/assets/f5522209-3cb9-45d3-94f1-2a52c96e455a)
+
 ### **NOTA:** Al iniciar un proyecto es recomendable crear primero los archivos con accesibilidad publica y luego codificar los metodos. 
 
 ## Archivo **CargoDAL.cs**
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// Referencias
+using System.Data;
+using System.Data.SqlClient;
+// Referencias del proyecto
+using SistemaElParaisal.EN;
 
+namespace SistemaElParaisal.DAL
+{
+    public class CargoDAL
+    {
+        #region Metodos de Busqueda
+        public static Cargo ObtenerPorId(byte pIdCargo)
+        {
+            Cargo obj = new Cargo();
+
+            SqlCommand comando = ComunDB.ObtenerComando();
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = "SP_ObtenerCargoPorId";
+            comando.Parameters.AddWithValue("@IdCargo", pIdCargo);
+
+            SqlDataReader reader = ComunDB.EjecutarComandoReader(comando);
+            while (reader.Read())
+            {
+                // Orden de las columnas depende de la Consulta SELECT utilizada
+                obj.IdCargo = reader.GetByte(0); // Columna [0] cero
+                obj.Nombre = reader.GetString(1);  // Columna [1] uno
+            }
+            return obj;
+        }
+
+        public static List<Cargo> Buscar(Cargo pCargo)
+        {
+            List<Cargo> lista = new List<Cargo>();
+
+            #region Proceso
+            using (SqlCommand comando = ComunDB.ObtenerComando())
+            {
+                byte contador = 0;
+                string whereSQL = " ";
+                string consulta = @"SELECT TOP 100 c.IdCargo, c.Nombre
+                                    FROM Cargo c ";
+
+                // Validar filtros
+                if (pCargo.Nombre != null && pCargo.Nombre.Trim() != string.Empty)
+                {
+                    if (contador > 0)
+                        whereSQL += " AND ";
+
+                    contador += 1;
+                    // @ValorNA = Valor Nombre/Apellido
+                    whereSQL += " c.Nombre LIKE @Nombre ";
+                    comando.Parameters.AddWithValue("@Nombre", "%" + pCargo.Nombre + "%");
+                }
+                // Agregar filtros
+                if (whereSQL.Trim().Length > 0)
+                {
+                    whereSQL = " WHERE " + whereSQL;
+                }
+                comando.CommandText = consulta + whereSQL;
+
+                SqlDataReader reader = ComunDB.EjecutarComandoReader(comando);
+                while (reader.Read())
+                {
+                    Cargo obj = new Cargo();
+                    // Orden de las columnas depende de la Consulta SELECT utilizada
+                    obj.IdCargo = reader.GetByte(0);
+                    obj.Nombre = reader.GetString(1);
+                    lista.Add(obj);
+                }
+                comando.Connection.Dispose();
+
+            }
+            #endregion
+
+            return lista;
+        }
+        #endregion
+    }
+}
 ```
 
 ## Archivo **EmpleadoDAL.cs**
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// Referencias
+using System.Data;
+using System.Data.SqlClient;
+// Referencias del proyecto
+using SistemaElParaisal.EN;
 
+namespace SistemaElParaisal.DAL
+{
+    public class EmpleadoDAL
+    {
+        #region Metodos GUARDAR, MODIFICAR Y ELIMINAR
+        public static int Guardar(Empleado pEmpleado)
+        {
+            SqlCommand comando = ComunDB.ObtenerComando();
+            comando.CommandText = "SP_InsertarEmpleado";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdCargo", pEmpleado.IdCargo);
+            comando.Parameters.AddWithValue("@Nombre", pEmpleado.Nombre);
+            comando.Parameters.AddWithValue("@Apellido", pEmpleado.Apellido);
+            comando.Parameters.AddWithValue("@Telefono", pEmpleado.Telefono);
+            comando.Parameters.AddWithValue("@Clave", pEmpleado.Clave);
+            return ComunDB.EjecutarComando(comando);
+        }
+        
+        public static int Modificar(Empleado pEmpleado)
+        {
+            SqlCommand comando = ComunDB.ObtenerComando();
+            comando.CommandText = "SP_ModificarEmpleado";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdEmpleado", pEmpleado.IdEmpleado);
+            comando.Parameters.AddWithValue("@IdCargo", pEmpleado.IdCargo);
+            comando.Parameters.AddWithValue("@Nombre", pEmpleado.Nombre);
+            comando.Parameters.AddWithValue("@Apellido", pEmpleado.Apellido);
+            comando.Parameters.AddWithValue("@Telefono", pEmpleado.Telefono);
+            comando.Parameters.AddWithValue("@Clave", pEmpleado.Clave);
+            return ComunDB.EjecutarComando(comando);
+        }
+
+        public static int Eliminar(Empleado pEmpleado)
+        {
+            SqlCommand comando = ComunDB.ObtenerComando();
+            comando.CommandText = "SP_EliminarEmpleado";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdEmpleado", pEmpleado.IdEmpleado);
+            return ComunDB.EjecutarComando(comando);
+        }
+        #endregion
+
+        #region Metodos de Busqueda
+        public static Empleado ObtenerPorId(int pIdEmpleado)
+        {
+            Empleado obj = new Empleado();
+
+            SqlCommand comando = ComunDB.ObtenerComando();
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = "SP_ObtenerEmpleadoPorId";
+            comando.Parameters.AddWithValue("@IdEmpleado", pIdEmpleado);
+
+            SqlDataReader reader = ComunDB.EjecutarComandoReader(comando);
+            while (reader.Read())
+            {
+                // Orden de las columnas depende de la Consulta SELECT utilizada
+                obj.IdEmpleado = reader.GetInt16(0); // Columna [0] cero
+                obj.IdCargo = reader.GetByte(1); // Columna [0] cero
+                obj.Nombre = reader.GetString(2);  // Columna [1] uno
+                obj.Apellido = reader.GetString(3); // Columna [2] dos
+                obj.Telefono = reader.GetString(4); // Columna [4] cuatro
+            }
+            return obj;
+        }
+
+        public static List<Empleado> Buscar(Empleado pEmpleado)
+        {
+            List<Empleado> lista = new List<Empleado>();
+
+            #region Proceso
+            using (SqlCommand comando = ComunDB.ObtenerComando())
+            {
+                byte contador = 0;
+                string whereSQL = " ";
+                string consulta = @"SELECT TOP 100 e.IdEmpleado, e.IdCargo, e.Nombre, e.Apellido, e.Telefono
+                                    FROM Empleado e ";
+
+                // Validar filtros
+                if (pEmpleado.IdCargo > 0)
+                {
+                    if (contador > 0)
+                        whereSQL += " AND ";
+
+                    contador += 1;
+                    whereSQL += " e.IdCargo = @IdCargo ";
+                    comando.Parameters.AddWithValue("@IdCargo", pEmpleado.IdCargo);
+                }
+                if (pEmpleado.Nombre != null && pEmpleado.Nombre.Trim() != string.Empty)
+                {
+                    if (contador > 0)
+                        whereSQL += " AND ";
+
+                    contador += 1;
+                    // @ValorNA = Valor Nombre/Apellido
+                    whereSQL += " (e.Nombre LIKE @ValorNA OR e.Apellido LIKE @ValorNA) ";
+                    comando.Parameters.AddWithValue("@ValorNA", "%" + pEmpleado.Nombre + "%");
+                }
+                if (pEmpleado.Telefono != null && pEmpleado.Telefono.Trim() != string.Empty)
+                {
+                    if (contador > 0)
+                        whereSQL += " AND ";
+
+                    contador += 1;
+                    whereSQL += " e.Telefono = @Telefono ";
+                    comando.Parameters.AddWithValue("@Telefono", pEmpleado.Telefono);
+                }
+                // Agregar filtros
+                if (whereSQL.Trim().Length > 0)
+                {
+                    whereSQL = " WHERE " + whereSQL;
+                }
+                comando.CommandText = consulta + whereSQL;
+
+                SqlDataReader reader = ComunDB.EjecutarComandoReader(comando);
+                while (reader.Read())
+                {
+                    Empleado obj = new Empleado();
+                    // Orden de las columnas depende de la Consulta SELECT utilizada
+                    obj.IdEmpleado = reader.GetInt16(0); // Columna [0] cero
+                    obj.IdCargo = reader.GetByte(1); // Columna [0] cero
+                    obj.Nombre = reader.GetString(2);  // Columna [1] uno
+                    obj.Apellido = reader.GetString(3); // Columna [2] dos
+                    obj.Telefono = reader.GetString(4); // Columna [4] cuatro
+                    lista.Add(obj);
+                }
+                comando.Connection.Dispose();
+            }
+            #endregion
+
+            return lista;
+        }
+        #endregion
+    }
+}
 ```
