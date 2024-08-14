@@ -11,4 +11,5 @@
 
 **Resultado: "ResultadoEmpleadoFrom.cs"**
 
-![image](https://github.com/user-attachments/assets/5d227dc7-b75c-4174-89e9-aad63a943571)
+![image](https://github.com/user-attachments/assets/fd5e0f23-2418-4495-8b4f-a2ac6821a7f2)
+
