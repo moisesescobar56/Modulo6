@@ -9,7 +9,7 @@
 - ViewModels
 - ToolsForms.cs
 
-## Ver tutorial: [Explicacion de configuracion](http://example.com/ "Ver video en YouTube")
+## Ver tutorial: https://youtu.be/8F7qcFjpcFY
 
 **Resultado:**
 ![image](https://github.com/user-attachments/assets/7b916c41-6c11-4350-b11f-ca17ca008d96)
