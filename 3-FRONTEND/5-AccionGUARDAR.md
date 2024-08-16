@@ -182,7 +182,7 @@ Este metodo recibe 2 parametros obligatorios (**pControl**, **pMensaje**) y 1 op
 ![image](https://github.com/user-attachments/assets/b3c3a4f4-4b78-4651-846d-37ea3b497e09)
 
 **NOTA:** REGEX es util para validar formatos como numero de telefono, dui o ID, fechas, reglas para contraseñas, etc.
-- Regex valida numero de telefono de 8 digitos: ^[0-9]{8}$
+- Regex que valida numero de telefono de 8 digitos: ^[0-9]{8}$
 - Regex que valida contraseña que contengas mayusculas, minusculas y numeros: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$
 - Los Regex se pueden solicitar a ***ChatGPT, Copilot o cualquier IA***.
 
