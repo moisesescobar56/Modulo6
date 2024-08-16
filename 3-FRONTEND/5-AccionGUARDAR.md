@@ -1,4 +1,4 @@
-# Programación de funcionalidad AGREGAR
+# Programación de funcionalidad GUARDAR
 
 ## PARTE 1 - Programación del boton NUEVO
 **Paso 1:** Abrir el formulario "AdminEmpleadoForm.cs".
