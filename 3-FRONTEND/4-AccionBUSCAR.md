@@ -115,11 +115,10 @@ CargarLista();
 **Resultado:** Dar clic en el botón **BUSCAR** y se mostrara la lista de empleados guardados.
 ![image](https://github.com/user-attachments/assets/9933a892-4d30-4867-9fcb-6cec078ef017)
 
-#### MEJORAS: No se muestra el nombre del cargo en los empleados filtrados por el cargo 
-**“Administrador”**.
+#### MEJORAS: No se muestra el nombre del cargo en los empleados filtrados por el cargo **“Administrador”**.
 ![image](https://github.com/user-attachments/assets/866a03fa-be78-4180-8d80-63c21aee01ec)
 
-**NOTA:** *Al observar el resultado, la información de empleados se carga correctamente, pero los datos
+***NOTA:*** *Al observar el resultado, la información de empleados se carga correctamente, pero los datos
 no se muestran de una forma limpia y comprensible para el usuario, debida a que el usuario 
 no puede interpretar cual es el cargo con valor “1”*
 
