@@ -18,7 +18,7 @@
 short idTabla = (short)ToolsForms.ObtenerIdGrid(listaDataGridView);
 if (idTabla > 0)
 {
-    // Abrir formulario para modificar el producto seleccionado
+    // Abrir formulario para modificar el empleado seleccionado
     RegistroEmpleadoForm formEditar = new RegistroEmpleadoForm();
     formEditar.idEmpleado = idTabla;
     formEditar.ShowDialog();
