@@ -63,8 +63,32 @@ EmpleadoBL empleadoBL = new EmpleadoBL();
 ![image](https://github.com/user-attachments/assets/4081210e-5c66-4f29-8c64-206696a29d35)
 
 **Paso 8:** Agregar a la lógica la variable “idEmpleado” para almacenar la llave primaria de cualquier registro de "Empleado" que se desee modificar. Debe **asignar el mismo tipo de dato** a como en esta en la **EN**.
-
+```csharp
+// Variables
+public short idEmpleado = 0; // variable del mismo tipo que la PK
+```
 ![image](https://github.com/user-attachments/assets/165cb33b-8e79-4c64-97e4-a0811c69fd2a)
 
-** Paso 9: Programar la lógica del método interno CargarCategorias que nos permitirá mostrar en 
-forma de lista de selección las categorías en un formulario.
+** Paso 9: Programar la lógica del método interno **"CargarCargos()"** que nos permitirá mostrar en forma de lista de selección las cargos en un formulario.
+```csharp
+public void CargarCargos()
+{
+    // Conexion a la tabla de Cargo en la DB
+    CargoBL categoriaBL = new CargoBL();
+
+    // Inicializar lista 
+    List<Cargo> cargos = new List<Cargo>();
+    cargos.Add(new Cargo { IdCargo = 0, Nombre = "SELECCIONAR" });
+
+    // Obtener lista de Cargos de la DB
+    cargos.AddRange(categoriaBL.Buscar(new Cargo()));
+    cargoComboBox.DataSource = cargos;
+
+    // Configurar texto y valor de la lista de seleccion
+    cargoComboBox.DisplayMember = "Nombre";
+    cargoComboBox.ValueMember = "IdCargo";
+}
+```
+
+![image](https://github.com/user-attachments/assets/11edff1d-8ed1-4586-8887-92c935525fc5)
+
