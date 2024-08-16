@@ -31,7 +31,8 @@ else
     MessageBox.Show("Primero debe seleccionar el registro que desea editar", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 }
 ```
-![image](https://github.com/user-attachments/assets/38f38c83-84f6-498f-9d75-31cf4c9ccbca)
+![image](https://github.com/user-attachments/assets/d6cb8ab6-a714-4a76-a25f-d8924c8044af)
+
 
 **Paso 4:** Iniciar la aplicacion.
 ![image](https://github.com/user-attachments/assets/c44bad4d-30e8-452e-bc00-594b96ab4a43)
