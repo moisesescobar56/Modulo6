@@ -31,6 +31,9 @@ List<Empleado> lista = new List<Empleado>();
 ![image](https://github.com/user-attachments/assets/adc667d2-1f66-4eca-a48c-25b18420eea7)
 
 ## PARTE 2 - Codificacion de ComboBox (Lista de selección de Cargos)
+
+![image](https://github.com/user-attachments/assets/d620e7af-286c-4dc6-8f00-09791f5658ab)
+
 **Paso 1:** Programar la lógica del método interno "CargarCargos()" para mostrar las cargos en forma de lista de selecciónen el control cargoComboBox.
 ```csharp
 public void CargarCargos()
