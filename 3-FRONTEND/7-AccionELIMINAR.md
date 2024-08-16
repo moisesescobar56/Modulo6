@@ -65,5 +65,5 @@ else
 **Resultado:** El registro se ha eliminado. Dar clic en Aceptar.
 ![image](https://github.com/user-attachments/assets/ef494e75-e893-4112-94ef-5b2474cdb32a)
 
-**Paso 9:** Detener la aplicacion.
+**Paso 8:** Detener la aplicacion.
 ![image](https://github.com/user-attachments/assets/56e319f1-4420-4a3d-9c4f-e72252c891c3)
