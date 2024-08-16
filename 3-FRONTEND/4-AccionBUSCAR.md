@@ -75,7 +75,7 @@ CargarCargos();
 **Paso 4:** Detener la aplicacion.
 ![image](https://github.com/user-attachments/assets/56e319f1-4420-4a3d-9c4f-e72252c891c3)
 
-## PARTE 3 - Codificacion 
+## PARTE 3 - Codificacion de Accion BUSCAR
 
 **Paso 1:** Seleccionar el botón "buscarButton" y dar **doble clic** para generar evento click
 
