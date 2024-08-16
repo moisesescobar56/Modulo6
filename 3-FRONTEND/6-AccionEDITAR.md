@@ -1,6 +1,6 @@
 # Programación de funcionalidad EDITAR
 
-## PARTE 1 - Configurar Referencias y Conexión
+## PARTE 1 - Programación de Accion EDITAR
 **Paso 1:** Ir al **Explorador de soluciones** y dar doble clic sobre el archivo **“AdminEmpleadoForm.cs”**. 
 
 ![image](https://github.com/user-attachments/assets/2a555a96-267d-481c-856a-91c636083c0c)
