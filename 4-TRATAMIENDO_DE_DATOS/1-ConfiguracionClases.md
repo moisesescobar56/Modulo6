@@ -11,7 +11,7 @@ Como punto de partida, debemos analizar nuestro diagrama de clases, mediante el 
 
 ### **Ejemplo 1:** Dependencia de 2 niveles
 
-![image](https://github.com/user-attachments/assets/1ea1e45e-bc74-4b3d-93cb-d54d8e59ebe0)
+![image](https://github.com/user-attachments/assets/ce7d39dd-56f5-46f0-b170-9ee9883c1620)
 
 **Explicación:** 
 - La **CLASE A** es independiente, debido a que no tiene **propiedades** que se relacionen a otras clases.
@@ -24,7 +24,7 @@ Debido a esta dependencia se denomina que es de 2 niveles, en la **CLASE B** se 
 
 ### **Ejemplo 2:** Dependencia de 3 niveles
 
-![image](https://github.com/user-attachments/assets/f3aba9c2-5db6-4c8e-9c60-215ec3d44b94)
+![image](https://github.com/user-attachments/assets/efbc6b0a-6061-4fa5-8497-666063c341a2)
 
 **Explicación:** 
 - La **CLASE A** es independiente, debido a que no tiene **propiedades** que se relacionen a otras clases.
@@ -40,6 +40,7 @@ Y en la **CLASE C** se debe agregar la representacion de la dependencia en forma
 ```
 + Empleado: Empleado
 ```
+
 ## PARTE 2 - Configuracion de las clases
 
 Para realizar este ejemplo **estrictamente** debemos tener agregada la propiedad virtual de la **dependencia**, en este caso la dependencia de ***IdCargo***, por lo cual es obligatorio haber  programado antes la clase Cargo con sus Propiedades en la capa “SistemaElParaisal.EN” y que  ambas clases sean públicas ***(public class)***.
