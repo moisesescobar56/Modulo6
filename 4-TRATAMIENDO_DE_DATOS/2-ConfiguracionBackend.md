@@ -1,4 +1,4 @@
-# IMPLEMENTACION DE TRATAMIENTO DE DATOS - BACKEND
+# TRATAMIENTO DE DATOS - BACKEND
 
 Para mostrar correctamente los datos del Empleado, deberemos configurar el back-end.
 
