@@ -1,1 +1,94 @@
+# IMPLEMENTACION DE TRATAMIENTO DE DATOS
+El tratamiento de datos consiste en representar la informacion al usuario de una forma comprensible, en la cual se puedan leer los datos y obtener la informacion completa, sin necesidad de tener conocimientos previos de la estructura de los datos. 
+
+Imagen
+
+El no tratar los datos, puede llevar a que los usuarios experimenten experiencias de usuario insatisfactorias, aunmentando la propablidad de resistirse al uso del software. 
+
+## PARTE 1 - Analisis de las dependencias
+
+Como punto de partida, debemos analizar nuestro diagrama de clases, mediante el podremos identificar las dependencias de nuestras clases y como se relacionan. 
+
+### **Ejemplo 1:** Dependencia de 2 niveles
+
+![image](https://github.com/user-attachments/assets/1ea1e45e-bc74-4b3d-93cb-d54d8e59ebe0)
+
+**Explicación:** 
+- La **CLASE A** es independiente, debido a que no tiene **propiedades** que se relacionen a otras clases.
+- La **CLASE B** es dependiente, porque tiene propiedades que se relacionan con la **CLASE A**.
+
+Debido a esta dependencia se denomina que es de 2 niveles, en la **CLASE B** se debe agregar la representacion de la dependencia en forma de **propiedad**, se crea una *nueva propiedad "publica"* con el nombre de la **CLASE A** y del tipo de la **CLASE A**, es decir: 
+```
++ Cargo: Cargo
+```
+
+### **Ejemplo 2:** Dependencia de 3 niveles
+
+![image](https://github.com/user-attachments/assets/f3aba9c2-5db6-4c8e-9c60-215ec3d44b94)
+
+**Explicación:** 
+- La **CLASE A** es independiente, debido a que no tiene **propiedades** que se relacionen a otras clases.
+- La **CLASE B** es dependiente, porque tiene propiedades que se relacionan con la **CLASE A**.
+- La **CLASE C** es dependiente, porque tiene propiedades que se relacionan con la **CLASE B** y la **CLASE B** a su vez tiene una dependencia de la **CLASE A**.
+
+Debido a esta dependencia se denomina que es de 3 niveles, en la **CLASE B** se debe agregar la representacion de la dependencia en forma de **propiedad**, se crea una *nueva propiedad "publica"* con el nombre de la **CLASE A** y del tipo de la **CLASE A**, es decir: 
+```
++ Cargo: Cargo
+```
+
+Y en la **CLASE C** se debe agregar la representacion de la dependencia en forma de **propiedad**, se crea una *nueva propiedad "publica"* con el nombre de la **CLASE B** y del tipo de la **CLASE B**, es decir: 
+```
++ Empleado: Empleado
+```
+## PARTE 2 - Configuracion de las clases
+
+Para realizar este ejemplo **estrictamente** debemos tener agregada la propiedad virtual de la **dependencia**, en este caso la dependencia de ***IdCargo***, por lo cual es obligatorio haber  programado antes la clase Cargo con sus Propiedades en la capa “SistemaElParaisal.EN” y que  ambas clases sean públicas ***(public class)***.
+
+![image](https://github.com/user-attachments/assets/7e63e2bf-7d71-4b5e-b1aa-e2a8f4a69214)
+
+# CODIGO FUENTE
+
+## Archivo **Cargo.cs**
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SistemaElParaisal.EN
+{
+    public class Cargo
+    {
+        public byte IdCargo { get; set; }
+        public string Nombre { get; set; }
+    }
+}
+```
+
+## Archivo **Empleado.cs**
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SistemaElParaisal.EN
+{
+    public class Empleado
+    {
+        public short IdEmpleado { get; set; }
+        public byte IdCargo { get; set; } // FK
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Telefono { get; set; }
+        public string Clave { get; set; }
+
+        // Propiedades virtuales para llaves foraneas (FK) para representar la Asociacion
+        public virtual Cargo Cargo { get; set; }
+    }
+}
+```
+
 
