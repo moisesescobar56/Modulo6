@@ -1,7 +1,7 @@
 # IMPLEMENTACION DE TRATAMIENTO DE DATOS
 El tratamiento de datos consiste en representar la informacion al usuario de una forma comprensible, en la cual se puedan leer los datos y obtener la informacion completa, sin necesidad de tener conocimientos previos de la estructura de los datos. 
 
-Imagen
+![Tratamiento de datos](https://github.com/user-attachments/assets/602283aa-7b03-4b24-b47d-481b8f16271a)
 
 El no tratar los datos, puede llevar a que los usuarios experimenten experiencias de usuario insatisfactorias, aunmentando la propablidad de resistirse al uso del software. 
 
