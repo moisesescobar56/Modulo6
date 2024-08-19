@@ -229,6 +229,9 @@ public void CargarCargoVirtual(List<Empleado> pLista, Action<List<Cargo>> pAccio
 }
 ```
 
+![image](https://github.com/user-attachments/assets/18693b87-e188-4d3c-8cda-4d84a1338db8)
+
+
 
 ---
 
