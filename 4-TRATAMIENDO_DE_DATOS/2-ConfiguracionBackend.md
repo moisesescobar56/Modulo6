@@ -194,6 +194,8 @@ if (pAccion != null && diccionario.Count > 0)
 }
 ```
 
+![image](https://github.com/user-attachments/assets/18693b87-e188-4d3c-8cda-4d84a1338db8)
+
 ### Metodo CargarCargoVirtual()
 ```csharp
 public void CargarCargoVirtual(List<Empleado> pLista, Action<List<Cargo>> pAccion = null)
@@ -228,10 +230,6 @@ public void CargarCargoVirtual(List<Empleado> pLista, Action<List<Cargo>> pAccio
     }
 }
 ```
-
-![image](https://github.com/user-attachments/assets/18693b87-e188-4d3c-8cda-4d84a1338db8)
-
-
 
 ---
 
