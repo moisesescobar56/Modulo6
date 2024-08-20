@@ -45,7 +45,8 @@ GO
 
 En este paso se creara un nuevo metodo en la clase de usuarios(Empleados,Personal o Usuario) del software. 
 
-![image](https://github.com/user-attachments/assets/48d1f122-7a80-44b7-b22b-232e64d07fc8)
+![image](https://github.com/user-attachments/assets/166e1736-e6df-402b-abcb-916ed8539112)
+
 
 **Paso 1:** Abrir el archivo de la clase de la capa DAL.
 
