@@ -95,7 +95,6 @@ En este paso se creara un nuevo metodo en la clase de usuarios(Empleados,Persona
 **Paso 2:** Ubicarse abajo de los metodos de Bucar y crear un nuevo metodo publico para conectar el acceso a datos, llamado **AutenticarCredenciales()**.
 
 ```csharp
-#region Autenticacion
 public Empleado AutenticarCredenciales(Empleado pEmpleado)
 {
     pEmpleado.Clave = CifrarHashSha256(pEmpleado.Clave);
