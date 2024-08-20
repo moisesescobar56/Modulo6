@@ -26,13 +26,6 @@ Un diccionario es una colección de pares **clave-valor** en la que cada **clave
 ---
 
 **Paso 2:** Ubicarse abajo del método Buscar y agregar el método público estatico **"ObtenerDiccionario"**.
-
-![image](https://github.com/user-attachments/assets/dcc3e427-32e0-4e84-84b3-a44ed6eae720)
-
-**Resultado:**
-
-![image](https://github.com/user-attachments/assets/0a663ed9-73d6-4861-a13a-77b704293e05)
-
 ```csharp
 // TRATAMIENTO DE DATOS
 public static Dictionary<byte, Cargo> ObtenerDiccionario(byte[] pArrayIdCargo)
@@ -44,6 +37,13 @@ public static Dictionary<byte, Cargo> ObtenerDiccionario(byte[] pArrayIdCargo)
     return lista.ToDictionary(x => x.IdCargo, x => x);
 }
 ```
+
+![image](https://github.com/user-attachments/assets/dcc3e427-32e0-4e84-84b3-a44ed6eae720)
+
+**Resultado:**
+
+![image](https://github.com/user-attachments/assets/0a663ed9-73d6-4861-a13a-77b704293e05)
+
 - En este caso para el diccionario, **IdCargo** es la **Clave** y **Cargo** es el **Valor**.
 - **byte[] pArrayIdCargo**: es un parametro que contiene los Id's de los cargos que se desean obtener de la base de datos.
 
