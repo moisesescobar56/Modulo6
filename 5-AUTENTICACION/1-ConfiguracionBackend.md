@@ -35,6 +35,7 @@ GO
 ![image](https://github.com/user-attachments/assets/d5a6c8c2-4ab3-4eea-819c-122914d2f441)
 
 **Resultado:** El SP solo debe devolver 1 registro del usuario.
+
 ![image](https://github.com/user-attachments/assets/ecad8c1a-b685-47ad-82f8-45cd07a211a2)
 
 **NOTA:** es importante aclarar que las el juego de credenciales (usuario y contraseña) es distinto en cada sistema, incluso puede ser la credenciales solamente un pin unico o clave secreta unica. 
