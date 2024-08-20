@@ -107,7 +107,7 @@ else
 **Paso 6:** Ingresar credenciales validas y dar clic en el boton **"ENTRAR"**.
 ![image](https://github.com/user-attachments/assets/667d7bd5-229a-4e37-b89c-0e145e493f50)
 
-**Resultado:** Dar clic en **Aceptar.
+**Resultado:** Dar clic en **Aceptar**.
 
 ![image](https://github.com/user-attachments/assets/b454d43c-2b2e-4aed-8092-0ac7949c77a3)
 
