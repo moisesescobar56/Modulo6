@@ -39,14 +39,14 @@ List<Empleado> lista = new List<Empleado>();
 public void CargarCargos()
 {
     // Conexion a la tabla de Cargo en la DB
-    CargoBL categoriaBL = new CargoBL();
+    CargoBL cargoBL = new CargoBL();
 
     // Inicializar lista 
     List<Cargo> cargos = new List<Cargo>();
     cargos.Add(new Cargo { IdCargo = 0, Nombre = "SELECCIONAR" }); // Opcion por defecto
 
     // Obtener lista de Cargos de la DB
-    cargos.AddRange(categoriaBL.Buscar(new Cargo()));
+    cargos.AddRange(cargoBL.Buscar(new Cargo()));
     cargoComboBox.DataSource = cargos;
 
     // Configurar texto y valor de la lista de seleccion
